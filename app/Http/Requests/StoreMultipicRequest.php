@@ -24,7 +24,8 @@ class StoreMultipicRequest extends FormRequest
     public function rules()
     {
         return [
-             'image' => 'required|max:5000',
+             'image' => 'required|array|min:1',
+             'image.*' => 'required|file|image',
         ];
     }
 }

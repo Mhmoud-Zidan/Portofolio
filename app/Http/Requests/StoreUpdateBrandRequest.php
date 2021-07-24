@@ -24,8 +24,9 @@ class StoreUpdateBrandRequest extends FormRequest
      */
     public function rules()
     {
+        // separate
         return [
-            'name' => 'required|string|unique:brands|min:3|max:255|',
+            'name' => 'required|string|min:3|max:255|unique:brands,name,'.$this->brand->id,
             'image' => 'sometimes|file|image|max:5000',
         ];
     }
