@@ -19,19 +19,20 @@ use App\Http\Controllers\MultipicController;
 |
 */
 
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // $users = User::all();
-    // $users = DB::table('users')->get();
+    $users = DB::table('users')->get();
 
     return view('admin.dashboard', compact('users'));
 })->name('dashboard');
-
 
 Route::middleware(['auth'])->group(function () {
 
